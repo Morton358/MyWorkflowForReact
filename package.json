@@ -4,7 +4,9 @@
   "main": "index.js",
   "repository": "git@github.com:Morton358/MyWorkflowForReact.git",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "dev": "webpack --mode development",
+    "build": "rimraf dist && webpack --config webpack.prod.config.js --progress --profile --color"
   },
   "author": "Morton358 <vovankovalchuk358@gmail.com>",
   "license": "MIT",
@@ -12,14 +14,19 @@
     "autoprefixer": "^8.1.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.10",
     "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.0.6",
     "postcss-loader": "^2.1.1",
     "style-loader": "^0.20.3",
+    "uglifyjs-webpack-plugin": "^1.2.3",
     "url-loader": "^1.0.1",
     "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
     "webpack-dev-server": "^3.1.1"
   },
   "dependencies": {

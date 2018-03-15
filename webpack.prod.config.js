@@ -1,9 +1,11 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-module-source-map',
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -62,5 +64,39 @@ module.exports = {
             filename: 'index.html',
             inject: 'body'
         })
-    ]
+        // new webpack.optimize.UglifyJsPlugin()
+    ],
+    optimization: {
+   minimizer: [
+     new UglifyJSPlugin({
+       uglifyOptions: {
+         output: {
+           comments: false
+         },
+         compress: {
+           unsafe_comps: true,
+           properties: true,
+           keep_fargs: false,
+           pure_getters: true,
+           collapse_vars: true,
+           unsafe: true,
+           warnings: false,
+           sequences: true,
+           dead_code: true,
+           drop_debugger: true,
+           comparisons: true,
+           conditionals: true,
+           evaluate: true,
+           booleans: true,
+           loops: true,
+           unused: true,
+           hoist_funs: true,
+           if_return: true,
+           join_vars: true,
+           drop_console: true
+         }
+       }
+     }),
+   ]
+ }
 };
